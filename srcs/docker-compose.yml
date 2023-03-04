@@ -8,5 +8,4 @@ services:
     wordpress:
         image: wordpress
         volumes:
-            -
-            -
+          target: /home/hharit/data

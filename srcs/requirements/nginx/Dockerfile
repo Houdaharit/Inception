@@ -1,6 +1,5 @@
 FROM debian:stable
-RUN sudo apt update
-RUN sudo apt dist-update -y
-RUN sudo apt install nginx -y
+RUN apt-get update
+RUN apt-get install nginx -y
 CMD ["nginx", "-g", "daemon off;"]
 #Not done yet
