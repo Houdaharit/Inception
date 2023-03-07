@@ -1,11 +1,6 @@
 services:
     nginx:
         image: nginx
-        port:
-            - 443:443
-    mariadb:
-        image: mariadb
-    wordpress:
-        image: wordpress
-        volumes:
-          target: /home/hharit/data
+        build: ./requirements/nginx
+        ports:
+          - 443:443
