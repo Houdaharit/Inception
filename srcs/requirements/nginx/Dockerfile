@@ -5,4 +5,3 @@ COPY conf/private.key /etc/ssl
 COPY conf/certificate.crt /etc/ssl
 EXPOSE 443
 CMD ["nginx", "-g", "daemon off;"]
-#Not done yet
