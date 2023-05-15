@@ -10,7 +10,7 @@ services:
   container_name: mariadb
   build : ./requirements/mariadb
   restart: always
-  environment:
-    - MYSQL_ROOT_PASSWORD= secret
+  env_file:
+    - .env
   volumes:
     - ./data:/var/lib/mysql
