@@ -1,16 +1,13 @@
-version: "3"
 services:
  nginx:
   container_name: nginx
   build: ./requirements/nginx
-  restart: always
+  restart: on-failure
   ports:
    - 443:443
  mariadb:
   container_name: mariadb
   build : ./requirements/mariadb
-  restart: always
+  restart: on-failure
   env_file:
     - .env
-  volumes:
-    - ./data:/var/lib/mysql

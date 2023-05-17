@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian:buster
 RUN apt-get update && apt-get install nginx -y
 RUN apt-get install openssl
 COPY index.html /usr/share/nginx/html
