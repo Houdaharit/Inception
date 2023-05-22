@@ -1,4 +1,5 @@
 FROM debian:buster
+
 RUN apt-get update && apt-get install -y \
     php-fpm \
     php-mysql \
@@ -11,5 +12,14 @@ RUN apt-get update && apt-get install -y \
     php-bcmath \
     && rm -rf /var/lib/apt/lists/*
 
+COPY ./script.sh .
+
+RUN chmod +x script.sh
+RUN ./script.sh
+RUN mkdir /var/run/php
+
+WORKDIR /var/www/html
+
 EXPOSE 9000
+
 CMD ["php-fpm7.3", "--nodaemonize"]
