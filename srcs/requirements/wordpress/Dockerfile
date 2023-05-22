@@ -10,15 +10,21 @@ RUN apt-get update && apt-get install -y \
     php-zip \
     php-intl \
     php-bcmath \
+	wget \
     && rm -rf /var/lib/apt/lists/*
 
+RUN wget -qO /tmp/wordpress.tar.gz https://wordpress.org/latest.tar.gz
+ 
 COPY ./script.sh .
 
-RUN chmod +x script.sh
-RUN ./script.sh
+RUN chmod +x script.sh && ./script.sh
+
 RUN mkdir /var/run/php
 
 WORKDIR /var/www/html
+
+RUN tar -xzvf /tmp/wordpress.tar.gz -C /var/www/html --strip-components=1
+RUN rm /tmp/wordpress.tar.gz
 
 EXPOSE 9000
 

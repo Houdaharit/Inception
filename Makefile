@@ -7,7 +7,10 @@ up:
 down:
 	docker-compose -f ./srcs/docker-compose.yaml down
 
-fclean:
+clean:
 	docker-compose -f ./srcs/docker-compose.yaml down --rmi all
 
-re: fclean all
+fclean:
+	docker system prune --force --all
+
+re: clean all
