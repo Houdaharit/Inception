@@ -17,6 +17,6 @@ services:
  php-fpm:      
    container_name: php-fpm
    build: ./requirements/wordpress
+   restart: on-failure
    ports:
        - 9000:9000
-   #restart: on-failure
