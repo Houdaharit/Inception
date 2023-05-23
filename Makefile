@@ -1,8 +1,8 @@
 all: up
 
 up:
-	#echo "127.0.1.1 hharit.42.fr" | sudo tee -a /etc/hosts
-	#mkdir -p /home/hharit/data/wordpress
+	echo "127.0.1.1 hharit.42.fr" | sudo tee -a /etc/hosts
+	mkdir -p /home/hharit/data/wordpress
 	docker-compose -f ./srcs/docker-compose.yaml up --build -d
 
 down:

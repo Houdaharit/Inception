@@ -21,10 +21,11 @@ WORKDIR "/var/www/html"
 
 RUN curl -o wordpress.tar.gz -SL https://wordpress.org/latest.tar.gz && \
     tar -xzf wordpress.tar.gz && \
-    rm wordpress.tar.gz && \
-    chown -R www-data:www-data /var/www/
+    rm wordpress.tar.gz
 
 COPY ./tools/www.conf /etc/php/7.3/fpm/pool.d/
+
+WORKDIR "/var/www/html/wordpress
 
 EXPOSE 9000
 
