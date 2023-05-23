@@ -6,17 +6,24 @@ services:
   restart: on-failure
   ports:
    - 443:443
+  volumes:
+   - ./data:/var/www/html
  mariadb:
-   container_name: mariadb
-   build : ./requirements/mariadb
-   restart: on-failure
-   ports:
-     - 3306:3306
-   environment:
-     - .env 
- php-fpm:      
-   container_name: php-fpm
-   build: ./requirements/wordpress
-   restart: on-failure
-   ports:
-       - 9000:9000
+  container_name: mariadb
+  build : ./requirements/mariadb
+  restart: on-failure
+  ports:
+    - 3306:3306
+  environment:
+    - .env 
+ wordpress:      
+  container_name: wordpress
+  build: ./requirements/wordpress
+  restart: on-failure
+  ports:
+    - 9000:9000
+  volumes:
+    - ./data:/var/www/html
+volumes:
+ data:
+

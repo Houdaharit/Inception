@@ -23,7 +23,8 @@ RUN mkdir /var/run/php
 
 WORKDIR /var/www/html
 
-RUN tar -xzvf /tmp/wordpress.tar.gz -C /var/www/html --strip-components=1
+RUN tar -xzvf /tmp/wordpress.tar.gz
+
 RUN rm /tmp/wordpress.tar.gz
 
 EXPOSE 9000
