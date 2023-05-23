@@ -7,7 +7,7 @@ services:
   ports:
    - 443:443
   volumes:
-   - ./wordpress:/var/www/html/wordpress
+   - /home/hharit/data/wordpress:/var/www/html
   networks:
    - network
   depends_on:
@@ -25,7 +25,7 @@ services:
   build: ./requirements/wordpress
   restart: on-failure
   volumes:
-      - ./wordpress:/var/www/html/wordpress
+      - /home/hharit/data/wordpress:/var/www/html
   networks:
    - network
   ports:
@@ -35,9 +35,9 @@ volumes:
  wordpress:
   driver: local
   driver_opts:
-   type: none
-   device: /Users/hharit/data/wordpress
-   o: bind
+    type: none
+    device: /Users/hharit/data/wordpress
+    o: bind
 networks:
  network :
   driver: bridge

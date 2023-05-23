@@ -2,7 +2,7 @@ all: up
 
 up:
 	#echo "127.0.1.1 hharit.42.fr" | sudo tee -a /etc/hosts
-	mkdir -p /Users/hharit/data/wordpress
+	#mkdir -p /home/hharit/data/wordpress
 	docker-compose -f ./srcs/docker-compose.yaml up --build -d
 
 down:

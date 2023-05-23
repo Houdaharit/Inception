@@ -12,19 +12,19 @@ RUN apt-get update && apt-get install -y \
     php-intl \
     php-bcmath \
 	wget \
+	curl \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /run/php
 
 WORKDIR "/var/www/html"
 
-RUN wget https://wordpress.org/latest.zip
-
-RUN unzip latest.zip
+RUN curl -o wordpress.tar.gz -SL https://wordpress.org/latest.tar.gz && \
+    tar -xzf wordpress.tar.gz && \
+    rm wordpress.tar.gz && \
+    chown -R www-data:www-data /var/www/
 
 COPY ./tools/www.conf /etc/php/7.3/fpm/pool.d/
-
-RUN rm -rf latest.zip
 
 EXPOSE 9000
 
