@@ -15,11 +15,12 @@ RUN apt-get update && apt-get install -y \
 
 RUN wget -qO /tmp/wordpress.tar.gz https://wordpress.org/latest.tar.gz
  
-COPY ./script.sh .
+#COPY ./script.sh .
 
-RUN chmod +x script.sh && ./script.sh
+#RUN chmod +x script.sh && ./script.sh
+COPY ./tools/www.conf /etc/php/7.3/fpm/pool.d/
 
-RUN mkdir /var/run/php
+RUN mkdir /run/php
 
 WORKDIR /var/www/html
 

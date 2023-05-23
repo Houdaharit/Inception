@@ -7,7 +7,9 @@ services:
   ports:
    - 443:443
   volumes:
-   - ./data:/var/www/html
+   - ./data:/var/www/html/wordpress
+  networks:
+   - network
  mariadb:
   container_name: mariadb
   build : ./requirements/mariadb
@@ -20,10 +22,16 @@ services:
   container_name: wordpress
   build: ./requirements/wordpress
   restart: on-failure
-  ports:
-    - 9000:9000
   volumes:
-    - ./data:/var/www/html
+    - ./data:/var/www/html/wordpress
+  networks:
+    - network
 volumes:
  data:
-
+  driver: local
+  driver_opts:
+   type: none
+   device: /home/hharit/data/wordpress
+networks:
+ network :
+  driver: bridge

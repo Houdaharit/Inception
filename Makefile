@@ -9,6 +9,8 @@ down:
 
 clean:
 	docker-compose -f ./srcs/docker-compose.yaml down --rmi all
+	docker volume rm $$(docker volume ls -q);\
+	docker network rm -f $$(docker network ls -q);\
 
 fclean:
 	docker system prune --force --all
