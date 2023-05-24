@@ -1,5 +1,5 @@
-mysql
-CREATE DATABASE wordpressdb;
-CREATE USER IF NOT EXISTS 'hharit'@'hharit.42.fr' IDENTIFIED BY 'secret';
-GRANT ALL PRIVILEGES ON testdb.* TO 'hharit'@'hharit.42.fr';
-FLUSH PRIVILEGES;
+cd /var/www/html/wordpress
+sed -i "s/WP_PASSWORD/$WP_PASSWORD/g" wp-config.php
+sed -i "s/WP_USERNAME/$WP_USERNAME/g" wp-config.php
+sed -i "s/WP_DB_HOST/$WP_DB_HOST/g" wp-config.php
+sed -i "s/WP_DB/$WP_DB/g" wp-config.php
