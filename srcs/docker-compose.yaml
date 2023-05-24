@@ -20,6 +20,8 @@ services:
     - 3306:3306
   environment:
     - .env 
+  networks:
+    - network
  wordpress:      
   container_name: wordpress
   build: ./requirements/wordpress
