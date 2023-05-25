@@ -2,8 +2,8 @@ FROM debian:buster
 RUN apt-get update
 RUN apt-get -y install mariadb-server
 COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
-COPY ./tools/script.sql /docker-entrypoint-initdb.d/
-RUN service mysql start && mysql < /docker-entrypoint-initdb.d/script.sql
+COPY ./tools/script.sql /script.sql
+RUN service mysql start && mysql < /script.sql
 RUN service mysql restart
 EXPOSE 3306
 CMD ["mysqld"]

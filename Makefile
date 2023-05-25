@@ -12,7 +12,9 @@ down:
 clean:
 	docker-compose -f ./srcs/docker-compose.yaml down --rmi all
 	docker volume rm $$(docker volume ls -q);\
-	#docker network rm $$(docker network ls -q);\
+	#docker network rm $$(docker network ls -q);
+	sudo rm -rf /home/hharit/data/mariadb
+	sudo rm -rf /home/hharit/data/wordpress
 
 fclean:
 	docker system prune --force --all
