@@ -23,12 +23,17 @@ services:
     - network
   environment:
     - .env
+  volumes:
+    - mariadb:/var/lib/mysql
+
  wordpress:      
+  depends_on:
+   - mariadb
   container_name: wordpress
   build: ./requirements/wordpress
   restart: on-failure
   volumes:
-      - wordpress:/var/www/html/wordpress
+   - wordpress:/var/www/html/wordpress
   networks:
    - network
   ports:
@@ -43,6 +48,13 @@ volumes:
     type: none
     device: /home/hharit/data/wordpress
     o: bind
+ mariadb:
+  driver: local
+  driver_opts:
+    type: none
+    device: /home/hharit/data/mariadb
+    o: bind
+
 
 networks:
  network :

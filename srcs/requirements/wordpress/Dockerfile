@@ -17,22 +17,28 @@ RUN apt-get update && apt-get install -y \
 
 RUN mkdir -p /run/php
 
-WORKDIR "/var/www/html"
-
-RUN curl -o wordpress.tar.gz -SL https://wordpress.org/latest.tar.gz && \
-    tar -xzf wordpress.tar.gz && \
-    rm wordpress.tar.gz
-
 COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/
 
-WORKDIR "/var/www/html/wordpress"
+WORKDIR /var/www/html 
 
-ADD ./tools/wp-config.php .
+RUN curl -o wordpress.tar.gz -SL https://wordpress.org/latest.tar.gz && \
+    tar -xf wordpress.tar.gz -C /var/www/html && \
+    rm wordpress.tar.gz
 
-COPY ./tools/script.sh .
+#RUN sed -i "s/password_here/$WP_PASSWORD/g" wp-config-sample.php
+#RUN  sed -i "s/username_here/$WP_USERNAME/g" wp-config-sample.php
+#RUN sed -i "s/localhost/$WP_DB_HOST/g" wp-config-sample.php
+#RUN sed -i "s/database_name_here/$WP_DB/g" wp-config-sample.php
+WORKDIR /var/www/html/wordpress
+
+COPY ./tools/wp-config.php .
+
+#COPY ./tools/script.sh .
+
+#RUN ./script.sh
 
 EXPOSE 9000
 
-ENTRYPOINT ["sh","./script.sh"]
+#CMD ["sh","./script.sh"]
 
 CMD ["php-fpm7.3", "--nodaemonize"]
