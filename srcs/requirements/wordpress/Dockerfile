@@ -41,4 +41,4 @@ EXPOSE 9000
 
 #CMD ["sh","./script.sh"]
 
-CMD ["php-fpm7.3", "--nodaemonize"]
+CMD ["php-fpm7.3", "-F", "-R"]
