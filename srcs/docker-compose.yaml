@@ -12,7 +12,9 @@ services:
    - network
   depends_on:
    - wordpress
-
+  env_file:
+   - .env
+  
  mariadb:
   container_name: mariadb
   build : ./requirements/mariadb
