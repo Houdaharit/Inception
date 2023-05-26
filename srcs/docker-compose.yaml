@@ -40,7 +40,7 @@ services:
    - network
   ports:
    - 9000:9000
-  environment:
+  env_file:
    - .env
 
 volumes:

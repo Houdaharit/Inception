@@ -1,4 +1,10 @@
-sed -i "s/qwerty1234/$WP_PASSWORD/g" wp-config.php
-sed -i "s/WP_USERNAME/"$WP_USERNAME"/g" wp-config.php
-sed -i "s/WP_DB_HOST/"$WP_DB_HOST"/g" wp-config.php
-sed -i "s/WP_DB/"$WP_DB"/g" wp-config.php
+sed -i "s/WP_DB_PASSWORD/"$WP_DB_PASSWORD"/" wp-config.php
+sed -i "s/WP_DB_USERNAME/"$WP_DB_USERNAME"/" wp-config.php
+sed -i "s/WP_DB_HOST/"$WP_DB_HOST"/" wp-config.php
+sed -i "s/WP_DB/"$WP_DB"/" wp-config.php
+
+cd /var/www/html/wordpress
+wp core download --allow-root
+wp core install --url=$DOMAIN_NAME --title=$TITLE --admin_user=$WP_USERNAME --admin_password=$WP_PASSWORD --admin_email=$WP_EMAIL --allow-root
+
+php-fpm7.3 -F -R
