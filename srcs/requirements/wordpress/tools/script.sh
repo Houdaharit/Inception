@@ -6,5 +6,6 @@ sed -i "s/WP_DB/"$WP_DB"/" wp-config.php
 cd /var/www/html/wordpress
 wp core download --allow-root
 wp core install --url=$DOMAIN_NAME --title=$TITLE --admin_user=$WP_USERNAME --admin_password=$WP_PASSWORD --admin_email=$WP_EMAIL --allow-root
+wp user create $USER $USER_EMAIL --role=author --user_pass=$USER_PASSWORD
 
 php-fpm7.3 -F -R

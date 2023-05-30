@@ -25,7 +25,7 @@ services:
     - 3306:3306
   networks:
     - network
-  environment:
+  env_file:
     - .env
   volumes:
     - mariadb:/var/lib/mysql

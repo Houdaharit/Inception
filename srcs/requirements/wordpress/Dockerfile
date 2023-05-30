@@ -31,12 +31,10 @@ RUN curl -o wordpress.tar.gz -SL https://wordpress.org/latest.tar.gz && \
 
 WORKDIR /var/www/html/wordpress
 
-COPY ./tools/wp-config.php .
+COPY ./conf/wp-config.php .
 
 COPY ./tools/script.sh .
 
 EXPOSE 9000
 
 CMD ["sh","./script.sh"]
-
-#CMD ["php-fpm7.3", "-F", "-R"]
