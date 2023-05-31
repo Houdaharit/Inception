@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     php-bcmath \
 	wget \
 	curl \
+        sendmail \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /run/php
