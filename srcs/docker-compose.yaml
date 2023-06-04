@@ -1,7 +1,7 @@
 version: "3"
 services:
  nginx:
-  container_name: nginx
+  container_name: nginx_container
   build: ./requirements/nginx
   image: nginx
   restart: on-failure
@@ -17,7 +17,7 @@ services:
    - .env
   
  mariadb:
-  container_name: mariadb
+  container_name: mariadb_container
   build : ./requirements/mariadb
   image: mariadb
   restart: on-failure
@@ -33,7 +33,7 @@ services:
  wordpress:      
   depends_on:
    - mariadb
-  container_name: wordpress
+  container_name: wordpress_container
   build: ./requirements/wordpress
   image: wordpress
   restart: on-failure
@@ -51,13 +51,13 @@ volumes:
   driver: local
   driver_opts:
     type: none
-    device: /home/hharit/data/wordpress
+    device: /Users/hharit/data/wordpress
     o: bind
  mariadb:
   driver: local
   driver_opts:
     type: none
-    device: /home/hharit/data/mariadb
+    device: /Users/hharit/data/mariadb
     o: bind
 
 
