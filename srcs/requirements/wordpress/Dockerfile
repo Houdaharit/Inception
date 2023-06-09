@@ -38,4 +38,7 @@ COPY ./tools/script.sh .
 
 EXPOSE 9000
 
-CMD ["sh","./script.sh"]
+ENTRYPOINT ["sh","./script.sh"]
+
+CMD ["php-fpm7.3" , "-F" ,"-R"]
+

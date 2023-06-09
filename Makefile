@@ -1,7 +1,6 @@
 all: build up
 
 build:
-	echo "127.0.0.1 hharit.42.fr" | sudo tee -a /etc/hosts
 	mkdir -p /home/hharit/data/wordpress
 	mkdir -p /home/hharit/data/mariadb
 	docker-compose -f ./srcs/docker-compose.yaml build

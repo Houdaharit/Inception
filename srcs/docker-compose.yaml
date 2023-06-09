@@ -4,7 +4,7 @@ services:
   container_name: nginx_container
   build: ./requirements/nginx
   image: nginx
-  restart: on-failure
+  restart: always
   ports:
    - 443:443
   volumes:
@@ -20,7 +20,7 @@ services:
   container_name: mariadb_container
   build : ./requirements/mariadb
   image: mariadb
-  restart: on-failure
+  restart: always
   ports:
     - 3306:3306
   networks:
@@ -31,12 +31,10 @@ services:
     - mariadb:/var/lib/mysql
 
  wordpress:      
-  depends_on:
-   - mariadb
   container_name: wordpress_container
   build: ./requirements/wordpress
   image: wordpress
-  restart: on-failure
+  restart: always
   volumes:
    - wordpress:/var/www/html/wordpress
   networks:

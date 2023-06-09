@@ -12,4 +12,8 @@ COPY conf/certificate.crt /etc/ssl
 
 EXPOSE 443
 
+COPY ./tools/script.sh .
+
+ENTRYPOINT ["/bin/bash", "script.sh"] 
+
 CMD ["nginx", "-g", "daemon off;"]
